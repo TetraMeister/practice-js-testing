@@ -14,4 +14,8 @@ describe('randomNumber(min, max)', () => {
   it('throws an error if min > max', () => {
     expect(() => randomNumber(2, 1)).toThrow()
   })
+  it('returns true if random number value is in the range', () => {
+    const result = randomNumber(1, 10);
+    expect(result >= 1 && result <= 10).toBe(true)
+  })
 })
