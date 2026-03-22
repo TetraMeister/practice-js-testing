@@ -8,7 +8,7 @@ describe('randomNumber(min, max)', () => {
   it('throws an error if min property is not a number', () => {
     expect(() => randomNumber('1', 1)).toThrow()
   })
-  // it('throws an error if max property is not a number', () => {
-  //   expect(randomNumber(1, '1'))
-  // })
+  it('throws an error if max property is not a number', () => {
+    expect(() => randomNumber(1, '1')).toThrow()
+  })
 })
