@@ -6,7 +6,7 @@ describe('randomNumber(min, max)', () => {
     expect(randomNumber(1, 1)).toBe(1)
   })
   it('throws an error if min property is not a number', () => {
-    expect(randomNumber('1', 1))
+    expect(() => randomNumber('1', 1)).toThrow()
   })
   // it('throws an error if max property is not a number', () => {
   //   expect(randomNumber(1, '1'))
