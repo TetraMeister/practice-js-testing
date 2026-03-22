@@ -3,7 +3,9 @@ export default function randomNumber(min, max) {
     throw new Error('Zły typ danych w funkcji randomNumber()')
   }
 
-
+  if (min > max) {
+    throw new Error('Źle ustawiony zakres funkcji randomNumber()')
+  }
 
   if (min === 1 && max === 1) {
     return 1;
