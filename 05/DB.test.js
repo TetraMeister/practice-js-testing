@@ -43,17 +43,33 @@ describe('DB.js', () => {
   });
 
   describe('.update(data)', () => {
-    it("should throw exception if item id doesn't exist", async () => {
+    it("should throw exception if item id isn't set", async () => {
       const db = new DB([{ id: 1 }, { id: 2 }]);
       await expect(db.update({})).rejects.toBe('ID have to be set!')
+    });
+
+    it('should return updated data obj if successfully updated', async () => {
+      const db = new DB([{ id: 1 }, { id: 2 }]);
+      await expect(db.update({ id: 2 })).resolves.toEqual({ id: 2 })
+    });
+
+    it("should throw exception if item id doesn't exist", async () => {
+      const db = new DB([{ id: 1 }, { id: 2 }]);
+      await expect(db.update({ id: 3 })).rejects.toBe('ID not found!')
     })
   });
 
   describe('.truncate()', () => {
-
+    it('Should return true if successfully truncated data', async () => {
+      const db = new DB([{ id: 1 }, { id: 2 }]);
+      await expect(db.truncate()).resolves.toBe(true)
+    })
   });
 
   describe('.getRows()', () => {
-
+    it('Should return this._rows on resolve', async () => {
+      const db = new DB([{ id: 1 }, { id: 2 }]);
+      await expect(db.getRows()).resolves.toBe(db._rows)
+    })
   });
 })
