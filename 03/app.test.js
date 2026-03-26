@@ -1,4 +1,3 @@
-import { describe } from 'node:test';
 import randomNumber from './app';
 
 describe('randomNumber(min, max)', () => {

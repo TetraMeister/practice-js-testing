@@ -4,12 +4,12 @@ describe('DB.js', () => {
   describe('.insert(data)', () => {
     it('should throw exception if data.id is not a number', async () => {
       const db = new DB();
-      await expect(db.insert({ id: "adc" })).rejects.toBeTruthy()
+      await expect(db.insert({ id: "adc" })).rejects.toBe('ID can be only number!')
     });
 
     it('should throw exception if data.id already exists in db', async () => {
       const db = new DB([{ id: 2 }]);
-      await expect(db.insert({ id: 2 })).rejects.toBeTruthy()
+      await expect(db.insert({ id: 2 })).rejects.toBe('ID can\'t be duplicated!')
     });
 
     it('should create next highest number of index for data to store', async () => {
@@ -69,7 +69,7 @@ describe('DB.js', () => {
   describe('.getRows()', () => {
     it('Should return this._rows on resolve', async () => {
       const db = new DB([{ id: 1 }, { id: 2 }]);
-      await expect(db.getRows()).resolves.toBe(db._rows)
+      await expect(db.getRows()).resolves.toEqual([{ id: 1 }, { id: 2 }])
     })
   });
 })
